@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick Stead | Back-End Developer</title>
+  <meta name="description" content="Rick Stead - Senior Back-End Developer specializing in scalable microservices architecture, cloud-native applications, and containerization.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/assets/css/reset.css">
+  <link rel="stylesheet" href="/src/assets/css/variables.css">
+  <link rel="stylesheet" href="/src/assets/css/main.css">
+  <link rel="stylesheet" href="/src/assets/css/animations.css">
+  <link rel="stylesheet" href="/src/assets/css/responsive.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body class="dark-mode">
+  <!-- Cursor -->
+  <div class="custom-cursor"></div>
+  
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader__content">
+      <div class="loader__spinner"></div>
+      <div class="loader__text">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header__content">
+        <div class="logo">
+          <a href="#" aria-label="Rick Stead">RS</a>
+        </div>
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+            <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+            <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+            <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+            <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <button class="theme-toggle" aria-label="Toggle dark/light mode">
+            <svg class="theme-toggle__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path class="sun" d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-15a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1zm0 15a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zm9-9a1 1 0 0 1-1 1h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1zm14.95 6.36a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zm-12.02-12a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zm12.02 1.41a1 1 0 0 1 0-1.41l.71-.71a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0zM5.64 17.95a1 1 0 0 1 0 1.41l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0z"/>
+              <path class="moon" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-5-4.25a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75zm2.5-3a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75z"/>
+            </svg>
+          </button>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__text">
+            <h1 class="hero__greeting">Hello, I'm <span class="accent">Rick Stead</span></h1>
+            <div class="hero__title">
+              <span class="hero__title-prefix">I build</span>
+              <span id="typed-text" class="hero__title-typed"></span>
+            </div>
+            <p class="hero__description">
+              Senior Back-End Developer specializing in scalable microservices architecture, 
+              cloud-native applications, and containerization.
+            </p>
+            <div class="hero__cta">
+              <a href="#contact" class="btn btn--primary">Get in Touch</a>
+              <a href="#" class="btn btn--secondary">Download Resume</a>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__terminal">
+              <div class="terminal__header">
+                <div class="terminal__buttons">
+                  <span class="terminal__button terminal__button--close"></span>
+                  <span class="terminal__button terminal__button--minimize"></span>
+                  <span class="terminal__button terminal__button--maximize"></span>
+                </div>
+                <div class="terminal__title">rick@stead: ~/projects</div>
+              </div>
+              <div class="terminal__body">
+                <div class="terminal__line">
+                  <span class="terminal__prompt">$</span>
+                  <span class="terminal__command">whoami</span>
+                </div>
+                <div class="terminal__output">Rick Stead - Back-End Developer</div>
+                <div class="terminal__line">
+                  <span class="terminal__prompt">$</span>
+                  <span class="terminal__command">ls -la skills/</span>
+                </div>
+                <div class="terminal__output">
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 python/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 golang/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 java/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 nodejs/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 databases/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 cloud/<br>
+                  drwxr-xr-x  2 rick staff  4096 Sep 19 16:37 containers/
+                </div>
+                <div class="terminal__line">
+                  <span class="terminal__prompt">$</span>
+                  <span class="terminal__command">cat about.md</span>
+                </div>
+                <div class="terminal__output terminal__output--typing">
+                  # Rick Stead<br>
+                  Senior Back-End Developer passionate about building scalable, maintainable systems.<br>
+                  8+ years of experience in microservices architecture and cloud-native applications.
+                </div>
+                <div class="terminal__line">
+                  <span class="terminal__prompt">$</span>
+                  <span class="terminal__cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__background">
+        <div class="particles-container" id="particles-js"></div>
+        <div class="hero__shapes">
+          <div class="hero__shape hero__shape--1"></div>
+          <div class="hero__shape hero__shape--2"></div>
+          <div class="hero__shape hero__shape--3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title"><span class="section__title-number">01.</span> About Me</h2>
+          <div class="section__line"></div>
+        </div>
+        <div class="about__content">
+          <div class="about__text">
+            <p class="about__paragraph">
+              Hello! I'm Rick, a senior back-end developer with over 8 years of experience building robust, 
+              scalable systems. My journey in software development began when I was fascinated by how complex 
+              systems could be broken down into manageable microservices.
+            </p>
+            <p class="about__paragraph">
+              I specialize in designing and implementing high-performance back-end solutions that power 
+              modern applications. My focus is on creating clean, maintainable code that scales efficiently 
+              and remains secure against evolving threats.
+            </p>
+            <p class="about__paragraph">
+              As a developer, I'm passionate about continuous learning and staying at the cutting edge of 
+              back-end technologies. I enjoy solving complex problems and mentoring junior developers to 
+              help them grow their skills.
+            </p>
+            <div class="about__technologies">
+              <h3 class="about__subtitle">Technologies I work with:</h3>
+              <ul class="technologies__list">
+                <li class="technologies__item">Python</li>
+                <li class="technologies__item">Go</li>
+                <li class="technologies__item">Java</li>
+                <li class="technologies__item">Node.js</li>
+                <li class="technologies__item">PostgreSQL</li>
+                <li class="technologies__item">MongoDB</li>
+                <li class="technologies__item">Redis</li>
+                <li class="technologies__item">Docker</li>
+                <li class="technologies__item">Kubernetes</li>
+                <li class="technologies__item">AWS</li>
+                <li class="technologies__item">Azure</li>
+                <li class="technologies__item">GCP</li>
+              </ul>
+            </div>
+          </div>
+          <div class="about__image">
+            <div class="about__image-wrapper">
+              <div class="about__image-container">
+                <img src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Rick Stead" class="about__img">
+              </div>
+              <div class="about__image-border"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title"><span class="section__title-number">02.</span> Skills & Expertise</h2>
+          <div class="section__line"></div>
+        </div>
+        <div class="skills__content">
+          <div class="skills__visualization">
+            <div class="skills__3d-container" id="skills-3d"></div>
+          </div>
+          <div class="skills__categories">
+            <div class="skills__category">
+              <h3 class="skills__category-title">Languages</h3>
+              <div class="skills__bars">
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Python</span>
+                    <span class="skill-bar__percentage">95%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="95%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Go</span>
+                    <span class="skill-bar__percentage">90%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="90%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Java</span>
+                    <span class="skill-bar__percentage">85%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="85%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Node.js</span>
+                    <span class="skill-bar__percentage">80%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="80%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skills__category">
+              <h3 class="skills__category-title">Databases</h3>
+              <div class="skills__bars">
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">PostgreSQL</span>
+                    <span class="skill-bar__percentage">95%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="95%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">MongoDB</span>
+                    <span class="skill-bar__percentage">90%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="90%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Redis</span>
+                    <span class="skill-bar__percentage">85%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skills__category">
+              <h3 class="skills__category-title">Cloud & DevOps</h3>
+              <div class="skills__bars">
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Docker/Podman</span>
+                    <span class="skill-bar__percentage">95%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="95%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">Kubernetes</span>
+                    <span class="skill-bar__percentage">85%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="85%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">AWS</span>
+                    <span class="skill-bar__percentage">90%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="90%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__info">
+                    <span class="skill-bar__name">CI/CD</span>
+                    <span class="skill-bar__percentage">90%</span>
+                  </div>
+                  <div class="skill-bar__bar">
+                    <div class="skill-bar__progress" data-width="90%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title"><span class="section__title-number">03.</span> Featured Projects</h2>
+          <div class="section__line"></div>
+        </div>
+        <div class="projects__content">
+          <div class="swiper projects-swiper">
+            <div class="swiper-wrapper">
+              <!-- Project 1 -->
+              <div class="swiper-slide project-card">
+                <div class="project-card__inner">
+                  <div class="project-card__image">
+                    <img src="https://images.unsplash.com/photo-1607706189992-eae578626c86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Microservices Architecture" class="project-card__img">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags">
+                      <span class="project-card__tag">Python</span>
+                      <span class="project-card__tag">Microservices</span>
+                      <span class="project-card__tag">Kubernetes</span>
+                    </div>
+                    <h3 class="project-card__title">Scalable E-commerce Platform</h3>
+                    <p class="project-card__description">
+                      Designed and implemented a high-performance microservices architecture for an e-commerce platform 
+                      handling 10,000+ transactions per minute with 99.99% uptime.
+                    </p>
+                    <div class="project-card__links">
+                      <a href="#" class="project-card__link" aria-label="GitHub Repository">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                      </a>
+                      <a href="#" class="project-card__link" aria-label="External Link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 2 -->
+              <div class="swiper-slide project-card">
+                <div class="project-card__inner">
+                  <div class="project-card__image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80" alt="Cloud Infrastructure" class="project-card__img">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags">
+                      <span class="project-card__tag">Go</span>
+                      <span class="project-card__tag">AWS</span>
+                      <span class="project-card__tag">Serverless</span>
+                    </div>
+                    <h3 class="project-card__title">Real-time Analytics Platform</h3>
+                    <p class="project-card__description">
+                      Built a serverless real-time analytics platform processing 5TB+ of data daily, 
+                      reducing infrastructure costs by 60% while improving performance by 40%.
+                    </p>
+                    <div class="project-card__links">
+                      <a href="#" class="project-card__link" aria-label="GitHub Repository">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                      </a>
+                      <a href="#" class="project-card__link" aria-label="External Link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 3 -->
+              <div class="swiper-slide project-card">
+                <div class="project-card__inner">
+                  <div class="project-card__image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Database Architecture" class="project-card__img">
+                  </div>
+                  <div class="project-card__content">
+                    <div class="project-card__tags">
+                      <span class="project-card__tag">Java</span>
+                      <span class="project-card__tag">PostgreSQL</span>
+                      <span class="project-card__tag">Redis</span>
+                    </div>
+                    <h3 class="project-card__title">High-Performance Database System</h3>
+                    <p class="project-card__description">
+                      Architected a distributed database system with advanced caching strategies, 
+                      achieving sub-10ms query response times for a financial services platform.
+                    </p>
+                    <div class="project-card__links">
+                      <a href="#" class="project-card__link" aria-label="GitHub Repository">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                      </a>
+                      <a href="#" class="project-card__link" aria-label="External Link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="project-card__icon">
+                          <path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title"><span class="section__title-number">04.</span> Work Experience</h2>
+          <div class="section__line"></div>
+        </div>
+        <div class="experience__content">
+          <div class="experience__timeline">
+            <!-- Experience Item 1 -->
+            <div class="experience__item">
+              <div class="experience__item-header">
+                <div class="experience__date">2023 - Present</div>
+                <h3 class="experience__role">Senior Back-End Architect</h3>
+                <div class="experience__company">TechNova Solutions</div>
+              </div>
+              <div class="experience__details">
+                <p class="experience__description">
+                  Leading the architecture and development of cloud-native microservices for enterprise clients. 
+                  Responsible for designing scalable, resilient systems and mentoring the development team.
+                </p>
+                <ul class="experience__achievements">
+                  <li>Architected a distributed system processing 50M+ daily transactions</li>
+                  <li>Reduced infrastructure costs by 35% through optimization</li>
+                  <li>Implemented zero-downtime deployment strategies</li>
+                  <li>Led migration from monolith to microservices architecture</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Experience Item 2 -->
+            <div class="experience__item">
+              <div class="experience__item-header">
+                <div class="experience__date">2020 - 2023</div>
+                <h3 class="experience__role">Back-End Team Lead</h3>
+                <div class="experience__company">DataStream Inc.</div>
+              </div>
+              <div class="experience__details">
+                <p class="experience__description">
+                  Led a team of 8 back-end developers building high-performance data processing systems. 
+                  Responsible for technical direction, code quality, and delivery timelines.
+                </p>
+                <ul class="experience__achievements">
+                  <li>Designed real-time data processing pipeline handling 2TB+ daily</li>
+                  <li>Improved system reliability from 99.5% to 99.99%</li>
+                  <li>Implemented comprehensive monitoring and alerting</li>
+                  <li>Reduced API response times by 65% through optimization</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Experience Item 3 -->
+            <div class="experience__item">
+              <div class="experience__item-header">
+                <div class="experience__date">2017 - 2020</div>
+                <h3 class="experience__role">Back-End Developer</h3>
+                <div class="experience__company">CloudScale Systems</div>
+              </div>
+              <div class="experience__details">
+                <p class="experience__description">
+                  Developed and maintained microservices for a SaaS platform serving 500+ enterprise clients. 
+                  Focused on API development, database optimization, and system integration.
+                </p>
+                <ul class="experience__achievements">
+                  <li>Built RESTful and GraphQL APIs powering mobile and web applications</li>
+                  <li>Optimized database queries reducing load times by 40%</li>
+                  <li>Implemented OAuth2 and JWT authentication system</li>
+                  <li>Contributed to open-source libraries for data processing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title"><span class="section__title-number">05.</span> Get In Touch</h2>
+          <div class="section__line"></div>
+        </div>
+        <div class="contact__content">
+          <div class="contact__info">
+            <p class="contact__text">
+              I'm currently open to new opportunities and collaborations. Whether you have a question, 
+              a project idea, or just want to say hello, feel free to reach out!
+            </p>
+            <div class="contact__methods">
+              <div class="contact__method">
+                <div class="contact__method-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                  </svg>
+                </div>
+                <div class="contact__method-details">
+                  <h3 class="contact__method-title">Email</h3>
+                  <a href="mailto:rick@steaddev.com" class="contact__method-value">rick@steaddev.com</a>
+                </div>
+              </div>
+              <div class="contact__method">
+                <div class="contact__method-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm.5 14.25v-4.5h-1v4.5h1zm0-6.75v-1.5h-1v1.5h1z"/>
+                  </svg>
+                </div>
+                <div class="contact__method-details">
+                  <h3 class="contact__method-title">Location</h3>
+                  <span class="contact__method-value">San Francisco, CA</span>
+                </div>
+              </div>
+              <div class="contact__method">
+                <div class="contact__method-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/>
+                  </svg>
+                </div>
+                <div class="contact__method-details">
+                  <h3 class="contact__method-title">Social</h3>
+                  <div class="contact__social">
+                    <a href="#" class="contact__social-link" aria-label="GitHub">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </a>
+                    <a href="#" class="contact__social-link" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                    </a>
+                    <a href="#" class="contact__social-link" aria-label="Twitter">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact__form-container">
+            <form class="contact__form">
+              <div class="form__group">
+                <input type="text" id="name" name="name" class="form__input" placeholder=" " required>
+                <label for="name" class="form__label">Name</label>
+              </div>
+              <div class="form__group">
+                <input type="email" id="email" name="email" class="form__input" placeholder=" " required>
+                <label for="email" class="form__label">Email</label>
+              </div>
+              <div class="form__group">
+                <input type="text" id="subject" name="subject" class="form__input" placeholder=" " required>
+                <label for="subject" class="form__label">Subject</label>
+              </div>
+              <div class="form__group">
+                <textarea id="message" name="message" class="form__input form__textarea" placeholder=" " required></textarea>
+                <label for="message" class="form__label">Message</label>
+              </div>
+              <button type="submit" class="btn btn--primary form__submit">
+                <span class="btn__text">Send Message</span>
+                <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M24 0l-6 22-8.129-7.239 7.802-8.234-10.458 7.227-7.215-1.754 24-12zm-15 16.668v7.332l3.258-4.431-3.258-2.901z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__copyright">
+          <p>&copy; 2025 Rick Stead. All rights reserved.</p>
+        </div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <span class="footer__divider">|</span>
+          <a href="#" class="footer__link">Terms of Service</a>
+        </div>
+        <div class="footer__back-to-top">
+          <a href="#hero" class="back-to-top" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/assets/js/main.js"></script>
+</body>
+</html>

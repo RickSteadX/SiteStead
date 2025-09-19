@@ -1,0 +1,24 @@
+{
+  "name": "rick-stead-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 6060"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "prettier": "^3.1.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2",
+    "swiper": "^11.0.4",
+    "three": "^0.158.0",
+    "typed.js": "^2.0.16"
+  }
+}

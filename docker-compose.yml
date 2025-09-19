@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rick-stead-website
+    ports:
+      - "6060:6060"
+    restart: unless-stopped
+    networks:
+      - website-network
+
+networks:
+  website-network:
+    driver: bridge
