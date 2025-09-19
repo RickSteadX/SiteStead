@@ -9,6 +9,11 @@
   .hero__terminal {
     max-width: 550px;
   }
+  
+  .business-card {
+    width: 320px;
+    height: 200px;
+  }
 }
 
 /* Desktops (1024px to 1439px) */
@@ -20,6 +25,11 @@
   .about__image-wrapper {
     width: 280px;
     height: 280px;
+  }
+  
+  .business-card {
+    width: 300px;
+    height: 180px;
   }
 }
 
@@ -64,6 +74,11 @@
   
   .skills__visualization {
     height: 300px;
+  }
+  
+  .business-card {
+    width: 280px;
+    height: 168px;
   }
   
   .projects-grid {
@@ -202,6 +217,27 @@
   .contact__form-container {
     padding: var(--space-md);
   }
+  
+  .business-card {
+    width: 260px;
+    height: 156px;
+  }
+  
+  .business-card__name {
+    font-size: var(--fs-md);
+  }
+  
+  .business-card__role {
+    font-size: var(--fs-xs);
+  }
+  
+  .business-card__description {
+    font-size: var(--fs-xs);
+  }
+  
+  .business-card__contact-item {
+    font-size: var(--fs-xxs);
+  }
 }
 
 /* Mobile Portrait (up to 479px) */
@@ -254,6 +290,16 @@
   
   .footer__divider {
     display: none;
+  }
+  
+  .business-card {
+    width: 240px;
+    height: 144px;
+  }
+  
+  .business-card__photo {
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -331,6 +377,30 @@
   .experience__item::before {
     background-color: black;
   }
+  
+  .business-card {
+    border: 1px solid #333;
+  }
+  
+  .business-card__name {
+    color: black;
+  }
+  
+  .business-card__role {
+    color: #333;
+  }
+  
+  .business-card__description {
+    color: black;
+  }
+  
+  .business-card__contact-label {
+    color: #333;
+  }
+  
+  .business-card__contact-value {
+    color: black;
+  }
 }
 
 /* Reduced Motion */
@@ -346,7 +416,8 @@
   .hero__shapes,
   .particles-container,
   .skill-bar__progress,
-  .swiper-container {
+  .swiper-container,
+  .business-card {
     display: none !important;
   }
 }

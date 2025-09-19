@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initSkillBars();
   initParallaxEffects();
-  initSkillsCodeVisualization();
+  initBusinessCardFlip();
   initSmoothScroll();
   initFormValidation();
 });
@@ -264,205 +264,41 @@ function initParallaxEffects() {
   });
 }
 
-// Skills code visualization using Three.js
-function initSkillsCodeVisualization() {
-  const container = document.getElementById('skills-3d');
+// Business card flip interaction
+function initBusinessCardFlip() {
+  const businessCard = document.querySelector('.business-card');
   
-  if (!container) return;
-  
-  // Create scene
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  container.appendChild(renderer.domElement);
-  
-  // Create code visualization
-  const codeSnippets = [
-    {
-      language: 'Python',
-      code: `
-def process_data(data):
-    result = []
-    for item in data:
-        if item.is_valid():
-            processed = transform(item)
-            result.append(processed)
-    return result
-      `
-    },
-    {
-      language: 'Go',
-      code: `
-func ProcessData(data []Item) []Item {
-    result := make([]Item, 0)
-    for _, item := range data {
-        if item.IsValid() {
-            processed := Transform(item)
-            result = append(result, processed)
-        }
-    }
-    return result
-}
-      `
-    },
-    {
-      language: 'Java',
-      code: `
-public List<Item> processData(List<Item> data) {
-    List<Item> result = new ArrayList<>();
-    for (Item item : data) {
-        if (item.isValid()) {
-            Item processed = transform(item);
-            result.add(processed);
-        }
-    }
-    return result;
-}
-      `
-    }
-  ];
-  
-  // Create floating code panels
-  const codePanels = [];
-  const panelGeometry = new THREE.PlaneGeometry(4, 3);
-  
-  codeSnippets.forEach((snippet, index) => {
-    // Create canvas for code rendering
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.width = 800;
-    canvas.height = 600;
+  if (businessCard) {
+    businessCard.addEventListener('click', () => {
+      businessCard.classList.toggle('flipped');
+    });
     
-    // Fill background
-    context.fillStyle = '#112240';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw code header
-    context.fillStyle = '#64FFDA';
-    context.font = 'bold 32px "Fira Code"';
-    context.fillText(snippet.language, 30, 50);
-    
-    // Draw code
-    context.fillStyle = '#CCD6F6';
-    context.font = '24px "Fira Code"';
-    const lines = snippet.code.trim().split('\n');
-    lines.forEach((line, lineIndex) => {
-      // Add syntax highlighting (simplified)
-      let coloredLine = line;
-      
-      // Keywords
-      const keywords = ['def', 'for', 'in', 'if', 'return', 'func', 'range', 'make', 'public', 'List', 'new', 'ArrayList'];
-      keywords.forEach(keyword => {
-        const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-        coloredLine = coloredLine.replace(regex, match => {
-          context.fillStyle = '#FF79C6';
-          context.fillText(match, 30 + coloredLine.indexOf(match) * 14, 100 + lineIndex * 30);
-          return ' '.repeat(match.length);
+    // Also add hover effect for desktop users
+    businessCard.addEventListener('mouseenter', () => {
+      if (!businessCard.classList.contains('flipped')) {
+        gsap.to(businessCard, {
+          rotationY: 15,
+          duration: 0.3,
+          ease: 'power1.out'
         });
-      });
-      
-      // Functions
-      const functions = ['process_data', 'is_valid', 'transform', 'ProcessData', 'IsValid', 'Transform', 'processData', 'isValid'];
-      functions.forEach(func => {
-        const regex = new RegExp(`\\b${func}\\b`, 'g');
-        coloredLine = coloredLine.replace(regex, match => {
-          context.fillStyle = '#50FA7B';
-          context.fillText(match, 30 + coloredLine.indexOf(match) * 14, 100 + lineIndex * 30);
-          return ' '.repeat(match.length);
+      }
+    });
+    
+    businessCard.addEventListener('mouseleave', () => {
+      if (!businessCard.classList.contains('flipped')) {
+        gsap.to(businessCard, {
+          rotationY: 0,
+          duration: 0.3,
+          ease: 'power1.out'
         });
-      });
-      
-      // Draw remaining text
-      context.fillStyle = '#CCD6F6';
-      context.fillText(coloredLine, 30, 100 + lineIndex * 30);
+      }
     });
     
-    // Create texture from canvas
-    const texture = new THREE.CanvasTexture(canvas);
-    const material = new THREE.MeshBasicMaterial({ 
-      map: texture,
-      transparent: true,
-      opacity: 0.9,
-      side: THREE.DoubleSide
+    // Add touch support for mobile devices
+    businessCard.addEventListener('touchstart', () => {
+      businessCard.classList.toggle('flipped');
     });
-    
-    const panel = new THREE.Mesh(panelGeometry, material);
-    
-    // Position panels in a circle
-    const angle = (index / codeSnippets.length) * Math.PI * 2;
-    const radius = 5;
-    panel.position.x = Math.sin(angle) * radius;
-    panel.position.z = Math.cos(angle) * radius;
-    panel.rotation.y = -angle;
-    
-    scene.add(panel);
-    codePanels.push(panel);
-  });
-  
-  // Add ambient light
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
-  
-  // Add directional light
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  directionalLight.position.set(0, 10, 10);
-  scene.add(directionalLight);
-  
-  // Position camera
-  camera.position.z = 8;
-  
-  // Animation loop
-  let rotationSpeed = 0.005;
-  
-  function animate() {
-    requestAnimationFrame(animate);
-    
-    // Rotate code panels
-    codePanels.forEach(panel => {
-      panel.rotation.y += rotationSpeed;
-    });
-    
-    renderer.render(scene, camera);
   }
-  
-  animate();
-  
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-  });
-  
-  // Interactive rotation on mouse move
-  container.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / container.clientWidth) - 0.5;
-    const y = (e.clientY / container.clientHeight) - 0.5;
-    
-    rotationSpeed = 0.001 + Math.abs(x) * 0.01;
-    
-    gsap.to(camera.position, {
-      x: x * 2,
-      y: -y * 2,
-      duration: 1,
-      ease: 'power1.out'
-    });
-  });
-  
-  // Reset rotation speed on mouse leave
-  container.addEventListener('mouseleave', () => {
-    rotationSpeed = 0.005;
-    
-    gsap.to(camera.position, {
-      x: 0,
-      y: 0,
-      duration: 1,
-      ease: 'power1.out'
-    });
-  });
 }
 
 // Smooth scroll for anchor links

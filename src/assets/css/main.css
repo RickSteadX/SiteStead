@@ -637,14 +637,122 @@ p {
 .skills__visualization {
   position: relative;
   height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.skills__3d-container {
+.business-card-container {
+  perspective: 1000px;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.business-card {
+  position: relative;
+  width: 300px;
+  height: 180px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s var(--transition-bezier);
+  cursor: pointer;
   border-radius: var(--border-radius-md);
-  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.business-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.business-card__side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+  box-sizing: border-box;
   background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-accent);
+}
+
+.business-card__side--back {
+  transform: rotateY(180deg);
+}
+
+.business-card__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+  border: 2px solid var(--color-accent);
+}
+
+.business-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.business-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.business-card__role {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-accent);
+}
+
+.business-card__description {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.business-card__contact {
+  width: 100%;
+}
+
+.business-card__contact-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-code);
+  font-size: var(--fs-xs);
+}
+
+.business-card__contact-label {
+  color: var(--color-accent);
+  font-weight: var(--fw-medium);
+}
+
+.business-card__contact-value {
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+a.business-card__contact-value {
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+a.business-card__contact-value:hover {
+  color: var(--color-accent);
 }
 
 .skills__categories {
