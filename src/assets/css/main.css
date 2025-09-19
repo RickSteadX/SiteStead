@@ -179,7 +179,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  padding: 2rem 0;
   background-color: rgba(10, 25, 47, 0.8);
   backdrop-filter: blur(10px);
   z-index: var(--z-fixed);
@@ -211,6 +211,7 @@ p {
   font-weight: var(--fw-semibold);
   color: var(--color-accent);
   position: relative;
+  text-shadow: none;
 }
 
 .nav__list {
@@ -452,11 +453,6 @@ p {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-sm);
   white-space: pre-wrap;
-}
-
-.terminal__output--typing {
-  border-right: 2px solid var(--color-accent);
-  animation: blink 1s step-end infinite;
 }
 
 .terminal__cursor {
@@ -722,13 +718,14 @@ p {
 }
 
 /* ===== Projects Section ===== */
-.projects-swiper {
-  width: 100%;
-  padding-bottom: var(--space-xl);
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 .project-card {
-  height: auto;
+  height: 100%;
   transition: transform var(--transition-normal);
 }
 
@@ -810,25 +807,6 @@ p {
   width: 20px;
   height: 20px;
   fill: currentColor;
-}
-
-.swiper-pagination {
-  bottom: 0 !important;
-}
-
-.swiper-pagination-bullet {
-  background-color: var(--color-text-secondary) !important;
-  opacity: 0.5 !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: var(--color-accent) !important;
-  opacity: 1 !important;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: var(--color-accent) !important;
 }
 
 /* ===== Experience Section ===== */

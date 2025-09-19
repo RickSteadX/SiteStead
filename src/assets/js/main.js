@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypedText();
   initScrollReveal();
   initSkillBars();
-  initProjectsSwiper();
   initParallaxEffects();
-  initSkills3D();
+  initSkillsCodeVisualization();
   initSmoothScroll();
   initFormValidation();
 });
@@ -225,35 +224,6 @@ function initSkillBars() {
   });
 }
 
-// Initialize projects swiper
-function initProjectsSwiper() {
-  const projectsSwiper = new Swiper('.projects-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    grabCursor: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1
-      },
-      768: {
-        slidesPerView: 2
-      },
-      1024: {
-        slidesPerView: 3
-      }
-    }
-  });
-}
-
 // Parallax effects
 function initParallaxEffects() {
   // Hero section parallax
@@ -294,8 +264,8 @@ function initParallaxEffects() {
   });
 }
 
-// 3D skills visualization using Three.js
-function initSkills3D() {
+// Skills code visualization using Three.js
+function initSkillsCodeVisualization() {
   const container = document.getElementById('skills-3d');
   
   if (!container) return;
@@ -309,65 +279,151 @@ function initSkills3D() {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
   
-  // Create particles
-  const particleCount = 1000;
-  const particles = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
+  // Create code visualization
+  const codeSnippets = [
+    {
+      language: 'Python',
+      code: `
+def process_data(data):
+    result = []
+    for item in data:
+        if item.is_valid():
+            processed = transform(item)
+            result.append(processed)
+    return result
+      `
+    },
+    {
+      language: 'Go',
+      code: `
+func ProcessData(data []Item) []Item {
+    result := make([]Item, 0)
+    for _, item := range data {
+        if item.IsValid() {
+            processed := Transform(item)
+            result = append(result, processed)
+        }
+    }
+    return result
+}
+      `
+    },
+    {
+      language: 'Java',
+      code: `
+public List<Item> processData(List<Item> data) {
+    List<Item> result = new ArrayList<>();
+    for (Item item : data) {
+        if (item.isValid()) {
+            Item processed = transform(item);
+            result.add(processed);
+        }
+    }
+    return result;
+}
+      `
+    }
+  ];
   
-  const colorPrimary = new THREE.Color(0x64FFDA);
-  const colorSecondary = new THREE.Color(0xFFD700);
+  // Create floating code panels
+  const codePanels = [];
+  const panelGeometry = new THREE.PlaneGeometry(4, 3);
   
-  for (let i = 0; i < particleCount; i++) {
-    // Position
+  codeSnippets.forEach((snippet, index) => {
+    // Create canvas for code rendering
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 800;
+    canvas.height = 600;
+    
+    // Fill background
+    context.fillStyle = '#112240';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw code header
+    context.fillStyle = '#64FFDA';
+    context.font = 'bold 32px "Fira Code"';
+    context.fillText(snippet.language, 30, 50);
+    
+    // Draw code
+    context.fillStyle = '#CCD6F6';
+    context.font = '24px "Fira Code"';
+    const lines = snippet.code.trim().split('\n');
+    lines.forEach((line, lineIndex) => {
+      // Add syntax highlighting (simplified)
+      let coloredLine = line;
+      
+      // Keywords
+      const keywords = ['def', 'for', 'in', 'if', 'return', 'func', 'range', 'make', 'public', 'List', 'new', 'ArrayList'];
+      keywords.forEach(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'g');
+        coloredLine = coloredLine.replace(regex, match => {
+          context.fillStyle = '#FF79C6';
+          context.fillText(match, 30 + coloredLine.indexOf(match) * 14, 100 + lineIndex * 30);
+          return ' '.repeat(match.length);
+        });
+      });
+      
+      // Functions
+      const functions = ['process_data', 'is_valid', 'transform', 'ProcessData', 'IsValid', 'Transform', 'processData', 'isValid'];
+      functions.forEach(func => {
+        const regex = new RegExp(`\\b${func}\\b`, 'g');
+        coloredLine = coloredLine.replace(regex, match => {
+          context.fillStyle = '#50FA7B';
+          context.fillText(match, 30 + coloredLine.indexOf(match) * 14, 100 + lineIndex * 30);
+          return ' '.repeat(match.length);
+        });
+      });
+      
+      // Draw remaining text
+      context.fillStyle = '#CCD6F6';
+      context.fillText(coloredLine, 30, 100 + lineIndex * 30);
+    });
+    
+    // Create texture from canvas
+    const texture = new THREE.CanvasTexture(canvas);
+    const material = new THREE.MeshBasicMaterial({ 
+      map: texture,
+      transparent: true,
+      opacity: 0.9,
+      side: THREE.DoubleSide
+    });
+    
+    const panel = new THREE.Mesh(panelGeometry, material);
+    
+    // Position panels in a circle
+    const angle = (index / codeSnippets.length) * Math.PI * 2;
     const radius = 5;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
+    panel.position.x = Math.sin(angle) * radius;
+    panel.position.z = Math.cos(angle) * radius;
+    panel.rotation.y = -angle;
     
-    positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-    positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-    positions[i * 3 + 2] = radius * Math.cos(phi);
-    
-    // Color
-    const color = i % 2 === 0 ? colorPrimary : colorSecondary;
-    colors[i * 3] = color.r;
-    colors[i * 3 + 1] = color.g;
-    colors[i * 3 + 2] = color.b;
-  }
-  
-  particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  
-  const particleMaterial = new THREE.PointsMaterial({
-    size: 0.1,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.8
+    scene.add(panel);
+    codePanels.push(panel);
   });
   
-  const particleSystem = new THREE.Points(particles, particleMaterial);
-  scene.add(particleSystem);
+  // Add ambient light
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
   
-  // Add text labels for skills
-  const skillLabels = [
-    { text: 'Python', position: new THREE.Vector3(3, 2, 0) },
-    { text: 'Go', position: new THREE.Vector3(-3, 1, 2) },
-    { text: 'Java', position: new THREE.Vector3(0, -3, 2) },
-    { text: 'Node.js', position: new THREE.Vector3(2, -1, -3) },
-    { text: 'PostgreSQL', position: new THREE.Vector3(-2, 3, -1) },
-    { text: 'MongoDB', position: new THREE.Vector3(1, -2, -2) },
-    { text: 'Docker', position: new THREE.Vector3(-1, -1, 3) }
-  ];
+  // Add directional light
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(0, 10, 10);
+  scene.add(directionalLight);
   
   // Position camera
   camera.position.z = 8;
   
   // Animation loop
+  let rotationSpeed = 0.005;
+  
   function animate() {
     requestAnimationFrame(animate);
     
-    particleSystem.rotation.x += 0.001;
-    particleSystem.rotation.y += 0.002;
+    // Rotate code panels
+    codePanels.forEach(panel => {
+      panel.rotation.y += rotationSpeed;
+    });
     
     renderer.render(scene, camera);
   }
@@ -386,9 +442,23 @@ function initSkills3D() {
     const x = (e.clientX / container.clientWidth) - 0.5;
     const y = (e.clientY / container.clientHeight) - 0.5;
     
-    gsap.to(particleSystem.rotation, {
-      x: y * 0.5,
-      y: x * 0.5,
+    rotationSpeed = 0.001 + Math.abs(x) * 0.01;
+    
+    gsap.to(camera.position, {
+      x: x * 2,
+      y: -y * 2,
+      duration: 1,
+      ease: 'power1.out'
+    });
+  });
+  
+  // Reset rotation speed on mouse leave
+  container.addEventListener('mouseleave', () => {
+    rotationSpeed = 0.005;
+    
+    gsap.to(camera.position, {
+      x: 0,
+      y: 0,
       duration: 1,
       ease: 'power1.out'
     });
